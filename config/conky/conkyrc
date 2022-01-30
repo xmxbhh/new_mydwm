@@ -1,0 +1,85 @@
+conky.config = {
+background = yes,
+cpu_avg_samples = 4,
+net_avg_samples = 2,
+out_to_console = false,
+use_xft = true,
+font = 'WenQuanYi Zen Hei:size = 10',
+xftalpha = 0.8,
+update_interval = 1,
+own_window = true,
+own_window_type = 'normal',
+own_window_transparent = true,
+own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+own_window_argb_visual = true,
+own_window_argb_value = 0,
+double_buffer = true,
+minimum_width = 260, minimum_height = 5,
+maximum_width = 400,
+draw_shades = false,
+draw_outline = false,
+draw_borders = false,
+stippled_borders = no,
+border_width = 1,
+default_color = 'white',
+default_shade_color = 'white',
+default_outline_color = 'white',
+gap_x = 15,
+gap_y = 20,
+alignment = 'top_right',
+--alignment bottom_left
+--alignment bottom_right
+use_spacer = 'none',
+no_buffers = true,
+uppercase = false
+};
+
+conky.text = [[
+${font LCD:style=Bold:pixelsize=50}${alignc}${time %H:%M:%S}${font WenQuanYi Zen Hei:pixelsize=16}
+${alignc}${time %Y年%b%d日 星期%a}${font WenQuanYi Zen Hei:pixelsize=15.5}
+######################################################################################################################
+${color green}${font WenQuanYi Zen Hei:size=20}S${font WenQuanYi Zen Hei:size=10}YSTEM ${hr 1}${color}${font WenQuanYi Zen Hei:pixelsize=12.5}
+#主机名称 $alignr$nodename
+#登录用户 ${alignr}${exec whoami}
+系统内核 $alignr$kernel
+机器架构 $alignr$machine
+开机时长 $alignr$uptime
+主板温度 ${alignr}${acpitemp} °C
+CPU频率 ${alignr}${freq dyn} MHz
+電池1 ${battery BAT0} $alignr 剩餘時間${battery_time BAT0}
+電池2 ${battery BAT1} $alignr 剩餘時間${battery_time BAT1}
+进程总数 ${alignr}$processes ($running_processes 个运行中)
+${color}CPU0 $alignr${cpu cpu0}%${color #78af78}${cpubar cpu0 8,200 }
+${color}CPU1 $alignr${cpu cpu1}%${color #78af78}${cpubar cpu1 8,200 }
+${color}CPU2 $alignr${cpu cpu2}%${color #78af78}${cpubar cpu2 8,200 }
+${color}CPU3 $alignr${cpu cpu3}%${color #78af78}${cpubar cpu3 8,200 }
+${color}CPU平均使用率 ${alignr}$cpu%
+${color #78af78}$cpubar
+${color}RAM ${alignr}$mem / $memmax ($memperc%)
+${color #78af78}${membar 4}
+${color}SWAP ${alignr}$swap / $swapmax ($swapperc%)
+${color #78af78}${swapbar 4}
+######################################################################################################################
+${color green}${font WenQuanYi Zen Hei:size=20}C${font WenQuanYi Zen Hei:size=10}USTOMIZE ${hr 1}${color}${font WenQuanYi Zen Hei:pixelsize=12.5}
+
+######################################################################################################################
+${color green}${font WenQuanYi Zen Hei:size=20}A${font WenQuanYi Zen Hei:size=10}PPLICATIONS ${hr 1}${color}
+${color yellow}CPU占用排行 $alignr CPU  MEM${color}
+${top name 1}$alignr${top cpu 1} ${top mem 1}
+${top name 2}$alignr${top cpu 2} ${top mem 2}
+${top name 3}$alignr${top cpu 3} ${top mem 3}
+${color yellow}内存占用排行 $alignr CPU  MEM${color}
+${top_mem name 1}$alignr${top_mem cpu 1} ${top_mem mem 1}
+${top_mem name 2}$alignr${top_mem cpu 2} ${top_mem mem 2}
+${top_mem name 3}$alignr${top_mem cpu 3} ${top_mem mem 3}
+######################################################################################################################
+${color green}${font WenQuanYi Zen Hei:size=20}F${font WenQuanYi Zen Hei:size=10}ILE ${font WenQuanYi Zen Hei:size=20}S${font WenQuanYi Zen Hei:size=10}YSTEM ${hr 1}${color}
+根文件存储 ${alignr}${fs_free /} / ${fs_size /}
+${color #78af78}${fs_bar 4 /}
+${color green}${font WenQuanYi Zen Hei:size=20}N${font WenQuanYi Zen Hei:size=10}ETWORK ${hr 1}${color}
+局域網地址 	${alignr}${addr wlan0}
+廣域網地址	${alignr}${execpi 60 curl ident.me}
+下载 ${downspeed wlan0}/s ${alignr}上传 ${upspeed wlan0}/s
+${downspeedgraph wlan0 25,107} ${alignr}${upspeedgraph wlan0 25,107}
+总下载 ${totaldown wlan0} ${alignr}总上传 ${totalup wlan0}
+]];
